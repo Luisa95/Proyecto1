@@ -1,0 +1,4 @@
+Trabajo1/bin/*
+Trabajo1/obj/*
+*.depend
+*.layout

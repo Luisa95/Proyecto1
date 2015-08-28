@@ -37,7 +37,6 @@ uint32_t RSBS (uint32_t Rd, uint32_t Rm);
 *\brief funcion que vuelve negativo un numero
 *\param Rd operando 1
 *\param Rm operando 2
-*\param Rn operando 3
 *\return un entero de 32 bits con el resultado
 **/
 
