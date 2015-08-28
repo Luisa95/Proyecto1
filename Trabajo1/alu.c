@@ -1,38 +1,44 @@
 
 #include "alu.h"
 
-uint32_t ADD(uint32_t Rd,uint32_t Rr)
+uint32_t ADD(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rd+Rr;//suma 2 registros
+    Rd=Rd+Rm;//suma 2 registros
     return Rd;
 }
 
-uint32_t SUB(uint32_t Rd,uint32_t Rr)
+uint32_t SUB(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rd-Rr;//resta 2 registros
+    Rd=Rd-Rm;//resta 2 registros
     return Rd;
 }
 
-uint32_t AND(uint32_t Rd,uint32_t Rr)
+uint32_t AND(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rd&Rr;//and entre los registros
+    Rd=Rd&Rm;//and entre los registros
     return Rd;
 }
 
-uint32_t OR(uint32_t Rd,uint32_t Rr)
+uint32_t OR(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rd|Rr;//or entre los registros
+    Rd=Rd|Rm;//or entre los registros
     return Rd;
 }
 
-uint32_t EOR(uint32_t Rd,uint32_t Rr)
+uint32_t EOR(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rd^Rr;//xor entre los registros
+    Rd=Rd^Rm;//xor entre los registros
     return Rd;
 };
 
-uint32_t MOV(uint32_t Rd,uint32_t Rr)
+uint32_t MOV(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rr;
+    Rd=Rm;
     return Rd;
 };
+
+uint32_t MUL (uint32_t Rd, uint32_t Rm)
+{
+    Rd=Rd*Rm;
+    return Rd;
+}
