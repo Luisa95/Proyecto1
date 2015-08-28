@@ -21,6 +21,6 @@ uint32_t MVN (uint32_t Rd, uint32_t Rm)
 }
 uint32_t RSBS (uint32_t Rd, uint32_t Rm, uint32_t Rn)
 {
-    Rd=Rn-Rm;
+    Rd=0-Rm;
     return Rd;
 }
