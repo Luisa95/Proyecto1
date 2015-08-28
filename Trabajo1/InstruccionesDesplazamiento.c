@@ -26,7 +26,7 @@ uint32_t RSBS(uint32_t Rd, uint32_t Rm)
     return Rd;
 }
 
-void NOP (void)
+void NOP(void)
 {
 }
 int32_t ASRS (int32_t Rd, int32_t Rm)
@@ -36,7 +36,9 @@ int32_t ASRS (int32_t Rd, int32_t Rm)
 }
 uint32_t ROR (uint32_t Rd, uint32_t Rm)
 {
-    /*Rd=Rd>>Rm;
+    Rd=Rd>>Rm;
     return Rd;
-    */
+
 }
+
+
