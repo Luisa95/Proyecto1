@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="InstruccionesDesplazamiento.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="InstruccionesDesplazamiento.h" />
 		<Unit filename="alu.c">
 			<Option compilerVar="CC" />
 		</Unit>
