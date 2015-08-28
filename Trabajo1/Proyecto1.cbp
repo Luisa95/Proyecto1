@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="alu.h" />
+		<Unit filename="banderas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="banderas.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
