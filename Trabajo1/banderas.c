@@ -1,10 +1,10 @@
-#include "banderas.h" 
+#include "banderas.h"
 
 void banderas(uint32_t Rd,uint32_t Rn, uint32_t Rr,struct bandera *puntero)
 {
-    uint32_t numero = 4294967296; //2^32 bits // a 31(?)
+    uint64_t numero = 4294967296; //2^32 bits // a 31(?)
 
-    if(rx==0)
+    if(Rd==0)
     {
         puntero->zero=1;
     }
@@ -12,8 +12,8 @@ void banderas(uint32_t Rd,uint32_t Rn, uint32_t Rr,struct bandera *puntero)
     {
         puntero->zero=0;
     }
-    
-    if((1<<31)&rx)
+
+    if((1<<31)&Rd)
     {
         puntero->negativo=1;
     }
@@ -22,7 +22,7 @@ void banderas(uint32_t Rd,uint32_t Rn, uint32_t Rr,struct bandera *puntero)
         puntero->negativo=0;
     }
 
-    
+
 
 
     if(((Rn>numero)&&(Rr<numero)&&(Rd<numero))||((Rr>numero)&&(Rn<numero)&&(Rd<numero))||((Rn>numero)&&(Rr>numero)))
@@ -34,7 +34,7 @@ void banderas(uint32_t Rd,uint32_t Rn, uint32_t Rr,struct bandera *puntero)
         puntero->acarreo=0;
     }
 
-    
+
     if(((Rn>numero)&&(Rr>numero)&&(Rd<=numero))||((Rn<=numero)&&(Rr<=numero)&&(Rd>numero)))
     {
         puntero->sobreflujo=1;
