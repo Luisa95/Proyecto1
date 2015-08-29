@@ -2,7 +2,7 @@
 
 void banderas(uint32_t Rd,uint32_t Rn, uint32_t Rr,struct bandera *puntero)
 {
-    uint32_t numero = 4294967296; //2^32 bits
+    uint32_t numero = 4294967296; //2^32 bits // a 31(?)
 
     if(rx==0)
     {
