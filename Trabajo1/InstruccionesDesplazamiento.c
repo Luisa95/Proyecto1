@@ -2,27 +2,27 @@
 
 uint32_t LSL (uint32_t Rd, uint32_t Rm, uint32_t Rn)
 {
-    Rd=Rm<<Rn;
+    Rd=Rm<<Rn;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
     return Rd;
 }
 uint32_t LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn)
 {
-    Rd=Rm>>Rn;
+    Rd=Rm>>Rn;     //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
     return Rd;
 }
 uint32_t BIC (uint32_t Rd, uint32_t Rm)
 {
-    Rd&=~Rm;
+    Rd&=~Rm;        //Realiza un and entre Rd y el complemento de Rm, y lo guarda en Rd
     return Rd;
 }
 uint32_t MVN (uint32_t Rd, uint32_t Rm)
 {
-    Rd=~Rm;
+    Rd=~Rm;         // Realiza el complemento de Rm y lo guarda en Rd
     return Rd;
 }
 uint32_t RSBS(uint32_t Rd, uint32_t Rm)
 {
-    Rd=0-Rm;
+    Rd=0-Rm;      //Niega el registro Rm y lo guarda en Rd
     return Rd;
 }
 
