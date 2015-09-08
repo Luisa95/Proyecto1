@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+void ALU (uint32_t Rd[], uint32_t Rm[], uint32_t Rn[]);
+
+/*
 uint32_t ADD(uint32_t Rd,uint32_t Rm);
 /**
 *\brief funcion que suma
@@ -9,6 +12,7 @@ uint32_t ADD(uint32_t Rd,uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t SUB(uint32_t Rd,uint32_t Rm);
 /**
 *\brief funcion que resta
@@ -16,6 +20,7 @@ uint32_t SUB(uint32_t Rd,uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t AND(uint32_t Rd,uint32_t Rm);
 /**
 *\brief funcion de producto logico
@@ -23,6 +28,7 @@ uint32_t AND(uint32_t Rd,uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t OR(uint32_t Rd,uint32_t Rm);
 /**
 *\brief funcion de suma logica
@@ -30,6 +36,7 @@ uint32_t OR(uint32_t Rd,uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t EOR(uint32_t Rd,uint32_t Rm);
 /**
 *\brief funcion de or exclusiva
@@ -37,6 +44,7 @@ uint32_t EOR(uint32_t Rd,uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t MOV(uint32_t Rd, uint32_t Rm);
 /**
 *\brief funcion que escribe un valor en un registro
@@ -44,6 +52,7 @@ uint32_t MOV(uint32_t Rd, uint32_t Rm);
 *\param Rm operando 2
 *\return un entero de 32 bits con el resultado
 **/
+/*
 uint32_t MUL (uint32_t Rd, uint32_t Rm);
 /**
 *\brief funcion que multiplica dos registros

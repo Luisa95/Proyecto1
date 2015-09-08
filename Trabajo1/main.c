@@ -13,7 +13,7 @@ int main(void)
 
 	start_color();	/* Permite manejar colores */
 
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);	/* Pair 1 -> Texto verde
+	init_pair(1, COLOR_GREEN, COLOR_BLACK);	/* Pair 1 -> Texto blanco
 											   fondo Negro */
 
 
@@ -25,17 +25,28 @@ int main(void)
 	attron(COLOR_PAIR(1));	/* Activa el color verde para el
 							   texto y negro para el fondo Pair 1*/
 
-	move(2, 30);	/* Mueve el cursor a la posición y=2, x=34*/
-	printw("Emulador Cortex-M0!!");
+	move(1, 30);	/* Mueve el cursor a la posición y=2, x=34*/
+	printw("EMULADOR CORTEX-M0");
 	refresh();	/* Imprime en la pantalla
 					Sin esto el printw no es mostrado */
 
+    init_pair(2, COLOR_CYAN, COLOR_BLACK);
+    attron(COLOR_PAIR(2));
     mvprintw(4,2,"Rd: ");
     mvprintw(5,2,"Rm: ");
     mvprintw(6,2,"Rn: ");
+
+    init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
+    attron(COLOR_PAIR(3));
     mvprintw(5,20,"OPERACION : ");
     mvprintw(6,20,"INSTRUCCION DE DESPLAZAMIENTO: ");
+
+    init_pair(4, COLOR_YELLOW, COLOR_BLACK);
+    attron(COLOR_PAIR(4));
     mvprintw(10,2,"BANDERAS: ");
+
+    init_pair(5, COLOR_WHITE, COLOR_BLACK);
+    attron(COLOR_PAIR(5));
     mvprintw(12,2,"Zero: ");
     mvprintw(12,20,"Negativa: ");
     mvprintw(13,2,"Acarreo: ");
