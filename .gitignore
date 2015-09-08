@@ -3,3 +3,4 @@ Trabajo1/obj/*
 *.depend
 *.layout
 *.cbp
+*.dll

@@ -37,8 +37,13 @@ int32_t ASRS (int32_t Rd, int32_t Rm)
 }
 uint32_t ROR (uint32_t Rd, uint32_t Rm)
 {
-    Rd=Rd>>Rm; // Organizar
-    return Rd;
+    Rd=Rd>>Rm;
+
+    if(Rd & 0x01)  //Si se cumple, hay un 1 en el LSB
+		Rd = (Rd>>1) | 0x80;
+	else
+		Rd >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
+	return Rd;
 
 }
 
