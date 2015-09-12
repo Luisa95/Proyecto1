@@ -1,18 +1,26 @@
 #include "registros.h"
-#include "alu.h"
-#include "InstruccionesDesplazamiento.h"
-#include <stdbool.h>
-#include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 /* La creación y el manejor total de los registros se da en esta función
 por esto no es necesario un retorno o que reciba ningún parametro
 se da un valor predeterminado a cada registro y se ofrecen las opciones de mostrar o modificar
 al final del codigo el usuario puede elegir que tipo de operación realizar
-
 */
-void Registros()
-{
 
+void Registros(uint32_t Rd[], uint32_t Rm[], uint32_t Rr[])
+{
+   int i;
+   printf("Los Registros actualmente tienen los valores: \n");
+
+         for(i=0;i<12;i++)
+         {
+           printf ("\n Rd[i] %d",Rd[i]);
+           printf ("\n Rm[i] %d",Rm[i]);
+           printf ("\n Rr[i] %d",Rr[i]);
+         };
+
+}
+/*
 uint32_t Rd[12],Rm[12],Rn[12];
 int caso,i,j,l,op,caso2;
 for (i=0;i<12;i=+1)
@@ -79,3 +87,4 @@ case 2:
   }
 }
 }
+*/

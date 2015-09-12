@@ -1,100 +1,43 @@
 #include "InstruccionesDesplazamiento.h"
-
-void desplazamiento (uint32_t Rd[], uint32_t Rm[], uint32_t Rn[])
+#include "registros.h"
+uint32_t LSL (uint32_t Rd, uint32_t Rm, int inmediato) // Rd: guarda le resultado, Rm # registro a desplazar inmediato:# de desplazamientos
 {
- int des;
- printf("Instruccion de desplazamiento:\n1.Desplazamiento a la izquierda\n2.Desplazamiento a la derecha\n3. ");
- scanf("%d",&des);
-
- switch (des)
- {
- case 1:
+    if (inmediato==0)
     {
-          Rd=Rm<<Rn;
-          break;
+      Rd=Rd<<Rm;
+      printf("%d",Rd);
     }
- case 2:
-     {
-          Rd=Rm>>Rn;
-          break;
-     }
-
- case 3:
-     {
-             Rd&=~Rm;
-             break;
-
-     }
- case 4:
-     {
-             Rd=~Rm;
-             break;
-
-     }
- case 5:
-     {
-             Rd=0-Rm;
-             break;
-
-     }
- case 6:
-     {
-         break;
-     }
- case 7:
-     {
-             Rd=Rd>>Rm; //Organizar
-             break;
-
-     }
- case 8:
-     {
-             Rd=Rd>>Rm; // Organizar
-             break;
-
-     }
- }
-
-
+    else Rd=Rm<<inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
+    printf("%d",Rd);
+    pc=pc+2;
 }
-
-
-
-
-
-
-
+void NOP(void)
+{
+pc=pc+2;
+}
 
 /*
-uint32_t LSL (uint32_t Rd, uint32_t Rm, uint32_t Rn)
-{
-    Rd=Rm<<Rn;
-    return Rd;
-}
 uint32_t LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn)
 {
-    Rd=Rm>>Rn;
+    Rd=Rm>>Rn;     //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
     return Rd;
 }
 uint32_t BIC (uint32_t Rd, uint32_t Rm)
 {
-    Rd&=~Rm;
+    Rd&=~Rm;        //Realiza un and entre Rd y el complemento de Rm, y lo guarda en Rd
     return Rd;
 }
 uint32_t MVN (uint32_t Rd, uint32_t Rm)
 {
-    Rd=~Rm;
+    Rd=~Rm;         // Realiza el complemento de Rm y lo guarda en Rd
     return Rd;
 }
 uint32_t RSBS(uint32_t Rd, uint32_t Rm)
 {
-    Rd=0-Rm;
+    Rd=0-Rm;      //Niega el registro Rm y lo guarda en Rd
     return Rd;
 }
 
-void NOP(void)
-{
-}
 int32_t ASRS (int32_t Rd, int32_t Rm)
 {
     Rd=Rd>>Rm; //Organizar
@@ -103,41 +46,15 @@ int32_t ASRS (int32_t Rd, int32_t Rm)
 }
 uint32_t ROR (uint32_t Rd, uint32_t Rm)
 {
-    Rd=Rd>>Rm; // Organizar
-    return Rd;
+    Rd=Rd>>Rm;
+
+    if(Rd & 0x01)  //Si se cumple, hay un 1 en el LSB
+		Rd = (Rd>>1) | 0x80;
+	else
+		Rd >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
+	return Rd;
 
 }
+
 
 */
-
-/*
-copìa >:3
-
-uint32_t REV(uint32_t Rd,uint32_t Rm)
-{
-    u32tobyte_t R;
-
-    R.data = Rm;
-    Rd = (uint32_t)(R.byte0 << 24) | (uint32_t)(R.byte3) | (uint32_t)(R.byte1 << 16) | (uint32_t)(R.byte2 << 8);
-
-    return Rd;
-}
-
-uint32_t REV16(uint32_t Rd,uint32_t Rm)
-{
-    u32tobyte_t R;
-    R.data = Rm;
-    Rd = (uint32_t)(R.byte0 << 16) | (uint32_t)(R.byte3<<8) | (uint32_t)(R.byte1 << 24) | (uint32_t)(R.byte2);
-
-    return Rd;
-}
-
-uint32_t REVSH(uint32_t Rd,uint32_t Rm)
-{
-
-return Rd;
-}
-*/
-
-
-

@@ -1,44 +1,41 @@
 #include "banderas.h"
-
-void banderas(uint32_t Rn,uint32_t Rd, uint32_t Rm,struct bandera *puntero)
+#include "registros.h"
+void banderas(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
-//<<<<<<< HEAD
-    uint32_t numerito = 4294967296; //2^32 bits, referencia
-//=======
-    uint64_t numero = 4294967296;
-//>>>>>>> a4a3a9542f8500b04d4bd5e0ad42af22ec62a84a
+    bool zero, carry, over, neg;
+    uint32_t numero = 4294967296; //2^32 bits -1 para el condicional
 
-    if(Rn==0)
+    if(Rd==0)
     {
-        puntero->zero=1;
+        zero=1;
+
     }
     else
     {
-        puntero->zero=0;
+        zero=0;
     }
 
-    if((1<<31)&Rn)
+    if((1<<31)&Rd)
     {
-        puntero->negativo=1;
+        neg=1;
     }
     else
     {
-        puntero->negativo=0;
+        neg=0;
     }
 
 
-    if(((Rm>numero)&&(Rd<numero)&&(Rn<numero))||((Rm>numero)&&(Rd<numero)&&(Rn<numero))||((Rd>numero)&&(Rm>numero)))
-    {   // numero es le valor máximo posible para un entero de 32 bits, por lo tanto rm nunca será mayor ya que sus caracteristicas se lo impiden
-        //el acarreo puede activarse al sumar o multiplicar
-        puntero->acarreo=1;
+    if(((Rm>numero)&&(Rr<numero)&&(Rd<numero))||((Rr>numero)&&(Rm<numero)&&(Rd<numero))||((Rm>numero)&&(Rr>numero)))
+    {
+        carry=1;
     }
     else
     {
-        puntero->acarreo=0;
+       carry=0;
     }
 
-
-    if(((Rd>numero)&&(Rm>numero)&&(Rn<=numero))||((Rd<=numero)&&(Rm<=numero)&&(Rn>numero)))
+/*
+    if(((Rn>numero)&&(Rr>numero)&&(Rd<=numero))||((Rn<=numero)&&(Rr<=numero)&&(Rd>numero)))
     {
         puntero->sobreflujo=1;
     }
@@ -47,5 +44,6 @@ void banderas(uint32_t Rn,uint32_t Rd, uint32_t Rm,struct bandera *puntero)
         puntero->sobreflujo=0;
     }
 
-
+*/
 }
+
