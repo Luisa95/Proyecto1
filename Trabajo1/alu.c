@@ -1,15 +1,10 @@
 #include "alu.h"
 #include "registros.h"
-void MOVS(uint32_t Rd, int inmediato)
-{
-    Rd=inmediato;
-    banderas(Rd,Rd,Rd); // puede activar l  bandera zero?
-
-};
+// Entre Registros
 void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm+Rr;       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
-    printf("El resultado es: %d",Rd);
+    printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 }
@@ -17,16 +12,27 @@ void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 void SUB(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm-Rr;
-    printf("El resultado es: %d",Rd);
+    printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 
 }
 
+void MUL (uint32_t Rd, uint32_t Rm,uint32_t Rr)
+{
+    Rd=Rm*Rr;
+    printf("El resultado es: %d \n",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;     //Multiplica 2 registros
+
+}
+
+
+
 void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm&Rr;
-    printf("El resultado es: %d",Rd);
+    printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 }
@@ -34,7 +40,7 @@ void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 void OR(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm|Rr;
-    printf("El resultado es: %d",Rd);
+    printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 
@@ -43,7 +49,7 @@ void OR(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 void EOR(uint32_t Rd,uint32_t , uint32_t Rr)
 {
     Rd=Rm^Rr;
-    printf("El resultado es: %d",Rd);
+    printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 
@@ -52,18 +58,38 @@ void EOR(uint32_t Rd,uint32_t , uint32_t Rr)
 void MOV(uint32_t Rd,uint32_t Rm)
 {
     Rd=Rm;
-    printf("El resultado  es: %d",Rd);
+    printf("El resultado  es: %d \n",Rd);
     banderas (Rd,Rd,Rm);
     pc=pc+2;
 
 };
-
-void MUL (uint32_t Rd, uint32_t Rm,uint32_t Rr)
+// COn inmediato
+void MOVS(uint32_t Rd, uint32_t inmediato)
 {
-    Rd=Rm*Rr;
-    printf("El resultado es: %d",Rd);
-    banderas (Rd,Rm,Rr);
+    Rd=inmediato;
+    banderas(Rd,Rd,Rd); // puede activar l  bandera zero?
+    pc=pc+2;
+};
+
+void ADDS(uint32_t Rd,uint32_t Rm, uint32_t inmediato)
+{
+    Rd=Rm+inmediato;
+    printf("El resultado de sumar %d y %d es :%d \n",Rm,inmediato,Rd);
+    banderas (Rd,Rm,inmediato);
+    pc=pc+2;
+}
+void SUBS(uint32_t Rd,uint32_t Rm, uint32_t inmediato)
+{
+    Rd=Rm-inmediato;
+    printf("El resultado de la resta entre %d y %d es :%d \n",Rm,inmediato,Rd);
+    banderas (Rd,Rm,inmediato);
+    pc=pc+2;
+}
+void MULS (uint32_t Rd,uint32_t Rm, uint32_t inmediato)
+{
+    Rd=Rm*inmediato;
+    printf("El resultado es: %d \n",Rd);
+    banderas (Rd,Rm,inmediato);
     pc=pc+2;     //Multiplica 2 registros
 
 }
-

@@ -2,10 +2,34 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void ADDS(uint32_t Rd, int inmediato );
-void MOVS(uint32_t Rd, int inmediato);
+void ADDS(uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+/**
+*\brief Suma un registro con un número
+*\param Rd, guarda el resutlado
+*\param Rm operando 1
+*\param inmediato operando 2
+**/
+void MOVS(uint32_t Rd, uint32_t inmediato);
+/**
+*\brief Copia le valor dle inmediato en el registro
+*\param Rd operando 1
+*\param inmediato operando 2
+**/
 
-
+void SUBS(uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+/**
+*\brief Resta un registro con un número
+*\param Rd, guarda el resutlado
+*\param Rm operando 1
+*\param inmediato operando 2
+**/
+void MULS (uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+/**
+*\brief Multiplica un registro con un número
+*\param Rd, guarda el resutlado
+*\param Rm operando 1
+*\param inmediato operando 2
+**/
 
 void ADD(uint32_t Rd,uint32_t Rm,uint32_t Rr);
 /**
