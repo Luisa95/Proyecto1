@@ -4,7 +4,9 @@ void banderas(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     bool zero, carry, over, neg;
     uint32_t numero = 4294967295 //2^32 bits -1 para el condicional
-
+    //uint64_t fludge1,fludge2;
+    //fludge2=Rm*Rr;
+   // fludge1=Rm+Rr;
     if(Rd==0)
     {
         zero=1;
@@ -25,7 +27,7 @@ void banderas(uint32_t Rd,uint32_t Rm, uint32_t Rr)
     }
 
 
-    if(((Rm>numero)&&(Rr<numero)&&(Rd<numero))||((Rr>numero)&&(Rm<numero)&&(Rd<numero))||((Rm>numero)&&(Rr>numero)))
+    if(((Rm>numero)&&(Rr<numero)&&(Rd<=Rm))||((Rr>numero)&&(Rm<numero)&&(Rd<=Rr))||((Rm>numero)&&(Rr>numero)))
     {
         carry=1;
     }
@@ -34,8 +36,8 @@ void banderas(uint32_t Rd,uint32_t Rm, uint32_t Rr)
        carry=0;
     }
 
-/*
-    if(((Rn>numero)&&(Rr>numero)&&(Rd<=numero))||((Rn<=numero)&&(Rr<=numero)&&(Rd>numero)))
+
+    if(((Rn>numero)&&(Rr>numero)&&(Rd>numero)))
     {
         over=1;
     }
@@ -44,6 +46,5 @@ void banderas(uint32_t Rd,uint32_t Rm, uint32_t Rr)
         over=0;
     }
 
-*/
 }
 
