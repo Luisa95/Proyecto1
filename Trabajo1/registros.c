@@ -1,11 +1,6 @@
 #include "registros.h"
 #include <stdint.h>
 #include <stdlib.h>
-/* La creación y el manejor total de los registros se da en esta función
-por esto no es necesario un retorno o que reciba ningún parametro
-se da un valor predeterminado a cada registro y se ofrecen las opciones de mostrar o modificar
-al final del codigo el usuario puede elegir que tipo de operación realizar
-*/
 
 void Registros(uint32_t Rd[], uint32_t Rm[], uint32_t Rr[])
 {

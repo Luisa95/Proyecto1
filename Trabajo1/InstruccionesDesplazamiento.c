@@ -5,46 +5,53 @@ uint32_t LSL (uint32_t Rd, uint32_t Rm, int inmediato) // Rd: guarda le resultad
     if (inmediato==0)
     {
       Rd=Rd<<Rm;
-      printf("%d",Rd);
+      printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd, inmediato);
+      pc=pc+2;
     }
     else Rd=Rm<<inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
-    printf("%d",Rd);
+    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
     pc=pc+2;
 }
-void NOP(void)
+void NOP()
 {
 pc=pc+2;
 }
 
-/*
-uint32_t LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn)
+void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn)
 {
-    Rd=Rm>>Rn;     //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
-    return Rd;
+    Rd=Rm>>Rn
+    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
+    pc=pc+2;
+         //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
+
 }
-uint32_t BIC (uint32_t Rd, uint32_t Rm)
+void BIC (uint32_t Rd, uint32_t Rm)
 {
     Rd&=~Rm;        //Realiza un and entre Rd y el complemento de Rm, y lo guarda en Rd
-    return Rd;
+    printf("resultado guardado en Rd: %d \n ",Rd,Rm);
+    pc=pc+2
 }
-uint32_t MVN (uint32_t Rd, uint32_t Rm)
+void MVN (uint32_t Rd, uint32_t Rm)
 {
     Rd=~Rm;         // Realiza el complemento de Rm y lo guarda en Rd
-    return Rd;
+    printf("resultado guardado en Rd: %d correspondiente al complemento de %d\n",Rd,Rm);
+    pc=pc+2;
 }
-uint32_t RSBS(uint32_t Rd, uint32_t Rm)
+void RSBS(uint32_t Rd, uint32_t Rm)
 {
     Rd=0-Rm;      //Niega el registro Rm y lo guarda en Rd
-    return Rd;
+    printf("resultado guardado en Rd: %d   \n correspondiente al complemento a dos de %d \n",Rd,Rm);
+    pc=pc+2;
 }
 
-int32_t ASRS (int32_t Rd, int32_t Rm)
+void ASRS (int32_t Rd, int32_t Rm)
 {
-    Rd=Rd>>Rm; //Organizar
-    return Rd;
+    Rd=Rd>>Rm;
+    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
+    pc=pc+2;
 
 }
-uint32_t ROR (uint32_t Rd, uint32_t Rm)
+void ROR (uint32_t Rd, uint32_t Rm)
 {
     Rd=Rd>>Rm;
 
@@ -52,9 +59,7 @@ uint32_t ROR (uint32_t Rd, uint32_t Rm)
 		Rd = (Rd>>1) | 0x80;
 	else
 		Rd >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
-	return Rd;
+	pc=pc+2;
 
 }
 
-
-*/

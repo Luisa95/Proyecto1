@@ -3,6 +3,7 @@
 void MOVS(uint32_t Rd, int inmediato)
 {
     Rd=inmediato;
+    banderas(Rd,Rd,Rd); // puede activar l  bandera zero?
 
 };
 void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
@@ -13,39 +14,56 @@ void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
     pc=pc+2;
 }
 
-void SUB(uint32_t Rd,uint32_t Rm)
+void SUB(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
-    Rd=Rd-Rm;       //resta 2 registros
+    Rd=Rm-Rr;
+    printf("El resultado es: %d",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;
 
 }
 
-void AND(uint32_t Rd,uint32_t Rm)
+void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
-    Rd=Rd&Rm;      //and entre los registros
+    Rd=Rm&Rr;
+    printf("El resultado es: %d",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;
+}
+
+void OR(uint32_t Rd,uint32_t Rm, uint32_t Rr)
+{
+    Rd=Rm|Rr;
+    printf("El resultado es: %d",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;
 
 }
 
-void OR(uint32_t Rd,uint32_t Rm)
+void EOR(uint32_t Rd,uint32_t , uint32_t Rr)
 {
-    Rd=Rd|Rm;      //or entre los registros
-
-}
-
-void EOR(uint32_t Rd,uint32_t Rm)
-{
-    Rd=Rd^Rm;      //xor entre los registros
+    Rd=Rm^Rr;
+    printf("El resultado es: %d",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;
 
 };
 
 void MOV(uint32_t Rd,uint32_t Rm)
 {
-    Rd=Rm;        //Mueve un registro en otro
+    Rd=Rm;
+    printf("El resultado  es: %d",Rd);
+    banderas (Rd,Rd,Rm);
+    pc=pc+2;
 
 };
 
-void MUL (uint32_t Rd, uint32_t Rm)
+void MUL (uint32_t Rd, uint32_t Rm,uint32_t Rr)
 {
-    Rd=Rd*Rm;     //Multiplica 2 registros
+    Rd=Rm*Rr;
+    printf("El resultado es: %d",Rd);
+    banderas (Rd,Rm,Rr);
+    pc=pc+2;     //Multiplica 2 registros
 
 }
 
