@@ -6,174 +6,174 @@
 typedef struct
 {
 	char mnemonic[10];
-	char op1_type;
+	char op1_type; // reconoce una r o un #
 	char op2_type;
 	char op3_type;
-	uint32_t op1_value;
+	uint32_t op1_value; guarda el numero del registro o el valor del inmediato
 	uint32_t op2_value;
 	uint32_t op3_value;
 }instruction_t;
 **/
 
-void decodeInstruction(instruction_t instruction)// recibe el retorno de getInstruccion
+void decodeInstruction(instruction_t instruction,uint32_t* Rd[], uint32_t* Rm[], uint32_t* Rr[])// recibe el retorno de getInstruccion
 {
-/**	if( strcmp(instruction.mnemonic,"ADC") == 00001 )
+/**	if( strcmp(instruction.mnemonic,"ADC") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
-	    ADC();
+//	    ADC();
 	    } else
 
-	if( strcmp(instruction.mnemonic,"ADD") == 00010 )
+	if( strcmp(instruction.mnemonic,"ADD") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
-	    ADD();
+	    ADD(Rd[]);
 	    /** Los parametros de entrada a la funcion deben ser tipo op1~2~3_type con valor (posición del registro) op1~2~3_value**/
 	/**    } else
-	if( strcmp(instruction.mnemonic,"AND") == 00011
+	if( strcmp(instruction.mnemonic,"AND") == 0
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    AND());
 	    } else
-	 if( strcmp(instruction.mnemonic,"ARS") == 00100 )
+	 if( strcmp(instruction.mnemonic,"ARS") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    ARS());
 	    } else
-     if( strcmp(instruction.mnemonic,"BIC") == 00101 )
+     if( strcmp(instruction.mnemonic,"BIC") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    BIC();
 	    } else
-	 if( strcmp(instruction.mnemonic,"CMN") == 00110 )
+	 if( strcmp(instruction.mnemonic,"CMN") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    CMN());
 	    } else
-	 if( strcmp(instruction.mnemonic,"CMP") == 00111 )
+	 if( strcmp(instruction.mnemonic,"CMP") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    CMP());
 	    } else
-	 if( strcmp(instruction.mnemonic,"EOR") == 01000 )
+	 if( strcmp(instruction.mnemonic,"EOR") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    EOR();
 	    } else
-	 if( strcmp(instruction.mnemonic,"LSL") == 01001 )
+	 if( strcmp(instruction.mnemonic,"LSL") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    LSL();
 	    } else
-     if( strcmp(instruction.mnemonic,"LSR") == 01010 )
+     if( strcmp(instruction.mnemonic,"LSR") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    LSR();
 	    } else
-	 if( strcmp(instruction.mnemonic,"MOV") == 01011 )
+	 if( strcmp(instruction.mnemonic,"MOV") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    MOV();
 	    } else
-	 if( strcmp(instruction.mnemonic,"MUL") == 01100 )
+	 if( strcmp(instruction.mnemonic,"MUL") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    MUL();
 	    } else
-     if( strcmp(instruction.mnemonic,"MVN") == 01101 )
+     if( strcmp(instruction.mnemonic,"MVN") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    MVN();
 	    } else
-	 if( strcmp(instruction.mnemonic,"NOP") == 01110 )
+	 if( strcmp(instruction.mnemonic,"NOP") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    NOP();
 	    } else
-     if( strcmp(instruction.mnemonic,"ORR") == 01111 )
+     if( strcmp(instruction.mnemonic,"ORR") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    ORR();
 	    } else
-	 if( strcmp(instruction.mnemonic,"REV") == 10000 )
+	 if( strcmp(instruction.mnemonic,"REV") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    REV();
 	    } else
-     if( strcmp(instruction.mnemonic,"REV16") == 10001 )
+     if( strcmp(instruction.mnemonic,"REV16") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    REV16();
 	    } else
-	 if( strcmp(instruction.mnemonic,"REVSH") == 10010 )
+	 if( strcmp(instruction.mnemonic,"REVSH") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    REVSH();
 	    } else
-	 if( strcmp(instruction.mnemonic,"ROR") == 10011 )
+	 if( strcmp(instruction.mnemonic,"ROR") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    ROR();
 	    } else
-	 if( strcmp(instruction.mnemonic,"RSB") == 10100 )
+	 if( strcmp(instruction.mnemonic,"RSB") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    RSBS();
 	    } else
-	 if( strcmp(instruction.mnemonic,"SBC") == 10101 )
+	 if( strcmp(instruction.mnemonic,"SBC") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    SBC();
 	    } else
-	 if( strcmp(instruction.mnemonic,"SUB") == 10110 )
+	 if( strcmp(instruction.mnemonic,"SUB") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
 		// ... Igual para los otros operandos
 	    SUB();
 	    } else
-	 if( strcmp(instruction.mnemonic,"TST") == 10111 )
+	 if( strcmp(instruction.mnemonic,"TST") == 0)
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)

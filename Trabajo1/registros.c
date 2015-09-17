@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-void Registros(uint32_t *Rd[], uint32_t *Rm[], uint32_t *Rr[])
+void Registros(uint32_t *Rd, uint32_t *Rm, uint32_t *Rr)
 {
 
     int i;

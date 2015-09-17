@@ -20,13 +20,19 @@ void NOP()
     pc=pc+2;
 }
 
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rr)
+void LSR (uint32_t Rd, uint32_t Rm, uint32_t inmediato)
 {
-    Rd=Rm>>Rr;
+    if (inmediato==0)
+    {
+      Rd=Rd>>Rm;
+      printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd, inmediato);
+      pc=pc+2;
+    }
+    else
+      Rd=Rm>>inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
+
     printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
     pc=pc+2;
-         //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
-
 }
 void BIC (uint32_t Rd, uint32_t Rm)
 {

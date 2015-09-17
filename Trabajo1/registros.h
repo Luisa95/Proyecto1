@@ -3,7 +3,7 @@
 #include <stdint.h>
 // variables globales
 int pc;
-void Registros(uint32_t *Rd[], uint32_t *Rm[], uint32_t *Rr[]);
+
 /**
 *\brief funcion que muestra los registros
 *\param Rd operando 1
@@ -11,6 +11,8 @@ void Registros(uint32_t *Rd[], uint32_t *Rm[], uint32_t *Rr[]);
 *\param Rr operando 3
 *\return no retorna nada
 **/
+void Registros(uint32_t *Rd, uint32_t *Rm, uint32_t *Rr);
+
 // se tiene que le MO cuenta con dos series de 12 registros de 32 bits c/u
 // se usa el tipo de variable uint32_t para representar cada uno de estos.
 // a estos se les puede dar un valor decimal y operar normalmente, el valor

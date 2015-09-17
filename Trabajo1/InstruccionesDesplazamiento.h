@@ -2,57 +2,64 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
-/**
-*\brief funcion de desplazamiento logico a la derecha
-*\param Rd operando 1
-*\param Rm operando 2
-*\param Rn operando 3
-**/
-
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion de desplazamiento logico a la izquierda
-*\param Rd operando 1
+*\param Rd operando 1, ademas guarda el resultado
 *\param Rm operando 2
-*\param Rn operando 3
+*\param inmediato operando 3
+*\return
 **/
+void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
 
-void BIC (uint32_t Rd, uint32_t Rm);
+/**
+*\brief funcion de desplazamiento logico a la derecha
+*\param Rd operando1, ademas guarda el resultado
+*\param Rm operando 2
+*\param inmediato operando 3
+*\return
+**/
+void LSR (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
+
 /**
 *\brief funcion que realiza una AND entre un registro y el complemento de otro
 *\param Rd operando 1
 *\param Rm operando 2
+*\return
 **/
+void BIC (uint32_t Rd, uint32_t Rm);
 
-void MVN (uint32_t Rd, uint32_t Rm);
 /**
 *\brief funcion que guarda el complemento de un numero
 *\param Rd operando 1
 *\param Rm operando 2
+*\return
 **/
+void MVN (uint32_t Rd, uint32_t Rm);
 
-void RSBS (uint32_t Rd, uint32_t Rm);
 /**
 *\brief funcion que obtiene el complemento a dos de un numero
 *\param Rd operando 1
 *\param Rm operando 2
 **/
+void RSBS (uint32_t Rd, uint32_t Rm);
 
-void NOP ();
 /**
-*\brief Aumenta el valor del pc
+*\brief funcion que no hace ninguna operacion solo aumenta el valor del pc
 **/
+void NOP ();
 
-void ASRS (int32_t Rd, int32_t Rm);
 /**
 *\brief funcion de desplazamiento aritmetico a la derecha
 *\param Rd operando 1
 *\param Rm operando 2
+*\return
 **/
-void ROR (uint32_t Rd, uint32_t Rm);
+void ASRS (int32_t Rd, int32_t Rm);
+
 /**
-*\brief funcion de rotacion
+*\brief funcion de rotacion a la derecha
 *\param Rd operando 1
 *\param Rm operando 2
+*\return
 **/
+void ROR (uint32_t Rd, uint32_t Rm);

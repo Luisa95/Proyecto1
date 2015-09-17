@@ -8,8 +8,9 @@
 
 int main(void)
 {
+char *caracter=0;
+instruction_t instruction;
 /*
-
 	//------- No modificar ------//
 		int i, num_instructions;
 		ins_t read;
@@ -53,7 +54,7 @@ int main(void)
 /** se definen los registros como punteros en el main, se llama a
 la funcion registros y se pasa como puntero**/
   int i;
-  uint32_t **Rd[12], **Rm[12], **Rr[12];
+  uint32_t *Rd[12], *Rm[12], *Rr[12];
   Registros(&Rd,&Rm,&Rr);
 
 	move(1, 30);	/* Mueve el cursor a la posición y=2, x=30*/
@@ -61,6 +62,8 @@ la funcion registros y se pasa como puntero**/
 	refresh();	/* Imprime en la pantalla
 				Sin esto el printw no es mostrado */
 
+instruction= getInstruction(*caracter);
+//decodeInstruction(instruction,*Rd[5],*Rm[5],*Rr[5]);
 
 for(i=0;i<12;i++)
 {
@@ -75,7 +78,7 @@ for(i=0;i<12;i++)
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     attron(COLOR_PAIR(3));
     mvprintw(18,30,"OPERACION : ");
-    mvprintw(19,30,"INSTRUCCION DE DESPLAZAMIENTO: ");
+    mvprintw(20,30,"INSTRUCCION DE DESPLAZAMIENTO: ");
 
     init_pair(4, COLOR_YELLOW, COLOR_BLACK);
     attron(COLOR_PAIR(4));
@@ -83,19 +86,18 @@ for(i=0;i<12;i++)
 
     init_pair(5, COLOR_WHITE, COLOR_BLACK);
     attron(COLOR_PAIR(5));
-    mvprintw(19,2,"Zero: %d",pc);
-    mvprintw(20,2,"Negativa: ");
-    mvprintw(21,2,"Acarreo: ");
-	mvprintw(22,2,"Sobreflujo: ");
+    mvprintw(20,2,"Zero: %d");
+    mvprintw(21,2,"Negativa: ");
+    mvprintw(22,2,"Acarreo: ");
+	mvprintw(23,2,"Sobreflujo: ");
 
-    mvprintw(23,2,"PC: %d",pc);
+    mvprintw(23,30,"PC: %d",pc);
 	attroff(COLOR_PAIR(1));	/* DEshabilita los colores Pair 1 */
 
 
 	getch();	/* Espera entrada del usuario */
     endwin();	/* Finaliza el modo curses */
 
-	return 0;
 
-
+return 0;
 }
