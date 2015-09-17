@@ -4,3 +4,4 @@ Trabajo1/obj/*
 *.layout
 *.cbp
 *.dll
+*.o
