@@ -1,6 +1,7 @@
 #include "InstruccionesDesplazamiento.h"
 #include "registros.h"
-uint32_t LSL (uint32_t Rd, uint32_t Rm, int inmediato) // Rd: guarda le resultado, Rm # registro a desplazar inmediato:# de desplazamientos
+
+void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato) // Rd: guarda le resultado, Rm # registro a desplazar inmediato:# de desplazamientos
 {
     if (inmediato==0)
     {
@@ -8,18 +9,20 @@ uint32_t LSL (uint32_t Rd, uint32_t Rm, int inmediato) // Rd: guarda le resultad
       printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd, inmediato);
       pc=pc+2;
     }
-    else Rd=Rm<<inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
+    else
+      Rd=Rm<<inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
+
     printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
     pc=pc+2;
 }
 void NOP()
 {
-pc=pc+2;
+    pc=pc+2;
 }
 
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn)
+void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rr)
 {
-    Rd=Rm>>Rn
+    Rd=Rm>>Rr;
     printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
     pc=pc+2;
          //Desplaza Rm a la derecha tantas veces como lo diga Rn y lo guarda en Rd
@@ -29,7 +32,7 @@ void BIC (uint32_t Rd, uint32_t Rm)
 {
     Rd&=~Rm;        //Realiza un and entre Rd y el complemento de Rm, y lo guarda en Rd
     printf("resultado guardado en Rd: %d \n ",Rd,Rm);
-    pc=pc+2
+    pc=pc+2;
 }
 void MVN (uint32_t Rd, uint32_t Rm)
 {

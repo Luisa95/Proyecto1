@@ -31,7 +31,7 @@ void MULS (uint32_t Rd,uint32_t Rm, uint32_t inmediato);
 *\param inmediato operando 2
 **/
 
-void ADD(uint32_t Rd,uint32_t Rm,uint32_t Rr);
+void ADD(uint32_t *Rd,uint32_t *Rm,uint32_t *Rr);
 /**
 *\brief funcion que suma
 *\param Rd operando 1
@@ -39,7 +39,7 @@ void ADD(uint32_t Rd,uint32_t Rm,uint32_t Rr);
 *\return un entero de 32 bits con el resultado
 **/
 
-void SUB(uint32_t Rd,uint32_t Rm);
+void SUB(uint32_t Rd,uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion que resta
 *\param Rd operando 1
@@ -47,7 +47,7 @@ void SUB(uint32_t Rd,uint32_t Rm);
 *\return un entero de 32 bits con el resultado
 **/
 
-void AND(uint32_t Rd,uint32_t Rm);
+void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion de producto logico
 *\param Rd operando 1
@@ -55,7 +55,7 @@ void AND(uint32_t Rd,uint32_t Rm);
 *\return un entero de 32 bits con el resultado
 **/
 
-void OR(uint32_t Rd,uint32_t Rm);
+void OR(uint32_t *Rd,uint32_t *Rm, uint32_t *Rr);
 /**
 *\brief funcion de suma logica
 *\param Rd operando 1
@@ -63,7 +63,7 @@ void OR(uint32_t Rd,uint32_t Rm);
 *\return un entero de 32 bits con el resultado
 **/
 
-void EOR(uint32_t Rd,uint32_t Rm);
+void EOR(uint32_t Rd,uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion de or exclusiva
 *\param Rd operando 1
@@ -79,7 +79,7 @@ void MOV(uint32_t Rd, uint32_t Rm);
 *\return un entero de 32 bits con el resultado
 **/
 
-void MUL (uint32_t Rd, uint32_t Rm);
+void MUL (uint32_t Rd, uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion que multiplica dos registros
 *\param Rd operando 1

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-void LSL (uint32_t Rd, uint32_t Rm, int inmediato);
+void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
 /**
 *\brief funcion de desplazamiento logico a la derecha
 *\param Rd operando 1
@@ -10,7 +10,7 @@ void LSL (uint32_t Rd, uint32_t Rm, int inmediato);
 *\param Rn operando 3
 **/
 
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rn);
+void LSR (uint32_t Rd, uint32_t Rm, uint32_t Rr);
 /**
 *\brief funcion de desplazamiento logico a la izquierda
 *\param Rd operando 1
@@ -51,3 +51,8 @@ void ASRS (int32_t Rd, int32_t Rm);
 *\param Rm operando 2
 **/
 void ROR (uint32_t Rd, uint32_t Rm);
+/**
+*\brief funcion de rotacion
+*\param Rd operando 1
+*\param Rm operando 2
+**/

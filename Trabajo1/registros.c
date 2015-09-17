@@ -2,9 +2,17 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-void Registros(uint32_t Rd[], uint32_t Rm[], uint32_t Rr[])
+void Registros(uint32_t *Rd[], uint32_t *Rm[], uint32_t *Rr[])
 {
-   int i;
+
+    int i;
+    for (i=0;i<12;i++)
+    {
+    Rd[i]=Rm[i]=Rr[i]=i;
+    }
+    pc=0;
+
+   /*
    printf("Los Registros actualmente tienen los valores: \n");
 
          for(i=0;i<12;i++)
@@ -13,7 +21,7 @@ void Registros(uint32_t Rd[], uint32_t Rm[], uint32_t Rr[])
            printf ("\n Rm[i] %d",Rm[i]);
            printf ("\n Rr[i] %d",Rr[i]);
          };
-
+*/
 }
 /*
 uint32_t Rd[12],Rm[12],Rn[12];

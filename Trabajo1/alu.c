@@ -1,9 +1,9 @@
 #include "alu.h"
 #include "registros.h"
 // Entre Registros
-void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
+void ADD(uint32_t *Rd,uint32_t *Rm, uint32_t *Rr)
 {
-    Rd=Rm+Rr;       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
+    *Rd=*Rm+*Rr;       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
     printf("El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
@@ -12,7 +12,7 @@ void ADD(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 void SUB(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm-Rr;
-    printf("El resultado es: %d \n",Rd);
+    mvprintw(6,20,"El resultado es: %d \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 
@@ -37,16 +37,16 @@ void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr)
     pc=pc+2;
 }
 
-void OR(uint32_t Rd,uint32_t Rm, uint32_t Rr)
+void OR(uint32_t *Rd,uint32_t *Rm, uint32_t *Rr)
 {
-    Rd=Rm|Rr;
-    printf("El resultado es: %d \n",Rd);
+    *Rd=*Rm|*Rr;
+    printf("El resultado es: %i \n",Rd);
     banderas (Rd,Rm,Rr);
     pc=pc+2;
 
 }
 
-void EOR(uint32_t Rd,uint32_t , uint32_t Rr)
+void EOR(uint32_t Rd,uint32_t Rm, uint32_t Rr)
 {
     Rd=Rm^Rr;
     printf("El resultado es: %d \n",Rd);
