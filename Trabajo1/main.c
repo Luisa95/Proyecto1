@@ -1,32 +1,12 @@
 #include "registros.h"
 #include "alu.h"
 #include "decoder.h"
-//#include "banderas.h"
+#include "banderas.h"
 #include "InstruccionesDesplazamiento.h"
 #include <curses.h>
-
-
 int main(void)
 {
-char *caracter=0;
-instruction_t instruction;
-/*
-	//------- No modificar ------//
-		int i, num_instructions;
-		ins_t read;
-		char** instructions;
-		instruction_t instruction;
-
-		num_instructions = readFile("code.txt", &read);
-		if(num_instructions==-1)
-			return 0;
-
-		if(read.array==NULL)
-			return 0;
-
-		instructions = read.array; /* Arreglo con las instrucciones */
-	//---------------------------//
-
+int j, cero;
 
 	initscr();		/* Inicia modo curses */
 	curs_set(0);	/* Cursor Invisible */
@@ -51,30 +31,56 @@ instruction_t instruction;
 
 
 
-/** se definen los registros como punteros en el main, se llama a
-la funcion registros y se pasa como puntero**/
-  int i;
-  uint32_t *Rd[12], *Rm[12], *Rr[12];
-  Registros(&Rd,&Rm,&Rr);
+/*char *caracter=0;       para llamar a las funciones getIstruccion y decodeInstruccion
+instruction_t instruction;
+*/
+
+    //------- No modificar ------//
+/*        int i, num_instructions;
+		ins_t read;
+		char** instructions;
+		instruction_t instruction;
+
+		num_instructions = readFile("code.txt", &read);
+		if(num_instructions==-1)
+			return 0;
+
+		if(read.array==NULL)
+			return 0;
+
+		instructions = read.array; /*Arreglo con las instrucciones
+
+
+	//---------------------------//
+
+ se definen los registros como vectores (punteros constantees) en el main,
+y usando e paso por referencia se envia la posicion deseada *a la función requerida*/
+
+
+  uint32_t Rd[12], Rm[12], Rr[12];
+  Registros(Rd,Rm,Rr);/* Solo una vez para dar valores iniciales*/
 
 	move(1, 30);	/* Mueve el cursor a la posición y=2, x=30*/
 	printw("EMULADOR CORTEX-M0");
 	refresh();	/* Imprime en la pantalla
 				Sin esto el printw no es mostrado */
 
-instruction= getInstruction(*caracter);
+//instruction= getInstruction(*caracter);
 //decodeInstruction(instruction,*Rd[5],*Rm[5],*Rr[5]);
 
-for(i=0;i<12;i++)
+
+for(j=0;j<12;j++)
 {
     init_pair(2, COLOR_CYAN, COLOR_BLACK);
     attron(COLOR_PAIR(2));
     mvprintw(3,2,"El valor actual de los registros es ");
-    mvprintw(4+i,2,"Rd[%d]:  %d  Rm[%d]:  %d  Rr[%d]:  %d ",i,*(Rd+i), i,*(Rm+i),i, *(Rr+i));
+    mvprintw(4+j,2,"Rd[%d]:  %d  Rm[%d]:  %d  Rr[%d]:  %d ",j,*(Rd+j), j,*(Rm+j),j, *(Rr+j));
     //mvprintw(6+(4*i),2,"Rm[%d]:  %d",i,*(Rm+i));
     //mvprintw(7+(4*i),2,"Rr[%d]:  %d",i,*(Rr+i));
     getch();
 }
+    //cero=SUB(&Rd[5],&Rm[3],&Rr[3]);
+
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     attron(COLOR_PAIR(3));
     mvprintw(18,30,"OPERACION : ");
@@ -86,7 +92,7 @@ for(i=0;i<12;i++)
 
     init_pair(5, COLOR_WHITE, COLOR_BLACK);
     attron(COLOR_PAIR(5));
-    mvprintw(20,2,"Zero: %d");
+    mvprintw(20,2,"Zero: %d",cero);
     mvprintw(21,2,"Negativa: ");
     mvprintw(22,2,"Acarreo: ");
 	mvprintw(23,2,"Sobreflujo: ");

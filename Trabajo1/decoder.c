@@ -2,7 +2,7 @@
 #include "alu.h"
 #include "InstruccionesDesplazamiento.h"
 
-/**
+/*
 typedef struct
 {
 	char mnemonic[10];
@@ -13,11 +13,11 @@ typedef struct
 	uint32_t op2_value;
 	uint32_t op3_value;
 }instruction_t;
-**/
+*/
 
-void decodeInstruction(instruction_t instruction,uint32_t* Rd[], uint32_t* Rm[], uint32_t* Rr[])// recibe el retorno de getInstruccion
+void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr)// recibe el retorno de getInstruccion
 {
-/**	if( strcmp(instruction.mnemonic,"ADC") == 0 )
+/*	if( strcmp(instruction.mnemonic,"ADC") == 0 )
         {
 		// instruction.op1_value --> Valor primer operando
 		// instruction.op1_type  --> Tipo primer operando (R->Registro #->Numero N->Ninguno)
@@ -32,7 +32,7 @@ void decodeInstruction(instruction_t instruction,uint32_t* Rd[], uint32_t* Rm[],
 		// ... Igual para los otros operandos
 	    ADD(Rd[]);
 	    /** Los parametros de entrada a la funcion deben ser tipo op1~2~3_type con valor (posición del registro) op1~2~3_value**/
-	/**    } else
+	/*    } else
 	if( strcmp(instruction.mnemonic,"AND") == 0
         {
 		// instruction.op1_value --> Valor primer operando
@@ -183,7 +183,7 @@ void decodeInstruction(instruction_t instruction,uint32_t* Rd[], uint32_t* Rm[],
 
 
 }
-**/
+*/
 
 instruction_t getInstruction(char* instStr)
 {

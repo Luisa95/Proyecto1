@@ -4,44 +4,45 @@
 
 /**
 *\brief funcion de desplazamiento logico a la izquierda
-*\param Rd operando 1, ademas guarda el resultado
-*\param Rm operando 2
+*\param Ra operando 1, ademas guarda el resultado
+*\param Rb operando 2
 *\param inmediato operando 3
-*\return
+*\return no retorna nada
 **/
-void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
+void LSL (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
 
 /**
 *\brief funcion de desplazamiento logico a la derecha
-*\param Rd operando1, ademas guarda el resultado
-*\param Rm operando 2
+*\param Ra operando1, ademas guarda el resultado
+*\param Rb operando 2
 *\param inmediato operando 3
-*\return
+*\return no retorna nada
 **/
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t inmediato);
+void LSR (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
 
 /**
 *\brief funcion que realiza una AND entre un registro y el complemento de otro
-*\param Rd operando 1
-*\param Rm operando 2
-*\return
+*\param Ra operando 1
+*\param Rb operando 2
+*\return no retorna nada
 **/
-void BIC (uint32_t Rd, uint32_t Rm);
+void BIC (uint32_t *Ra, uint32_t *Rb);
 
 /**
-*\brief funcion que guarda el complemento de un numero
-*\param Rd operando 1
-*\param Rm operando 2
-*\return
+*\brief funcion que gua*Raa el complemento de un numero
+*\param Ra operando 1
+*\param Rb operando 2
+*\return no retorna nada
 **/
-void MVN (uint32_t Rd, uint32_t Rm);
+void MVN (uint32_t *Ra, uint32_t *Rb);
 
 /**
 *\brief funcion que obtiene el complemento a dos de un numero
-*\param Rd operando 1
-*\param Rm operando 2
+*\param Ra operando 1
+*\param Rb operando 2
+*\return no retorna nada
 **/
-void RSBS (uint32_t Rd, uint32_t Rm);
+void RSBS (uint32_t *Ra, uint32_t *Rb);
 
 /**
 *\brief funcion que no hace ninguna operacion solo aumenta el valor del pc
@@ -50,16 +51,16 @@ void NOP ();
 
 /**
 *\brief funcion de desplazamiento aritmetico a la derecha
-*\param Rd operando 1
-*\param Rm operando 2
-*\return
+*\param Ra operando 1
+*\param Rb operando 2
+*\return no retorna nada
 **/
-void ASRS (int32_t Rd, int32_t Rm);
+void ASRS (int32_t *Ra, int32_t *Rb);
 
 /**
 *\brief funcion de rotacion a la derecha
-*\param Rd operando 1
-*\param Rm operando 2
-*\return
+*\param Ra operando 1
+*\param Rb operando 2
+*\return no retorna nada
 **/
-void ROR (uint32_t Rd, uint32_t Rm);
+void ROR (uint32_t *Ra, uint32_t *Rb);

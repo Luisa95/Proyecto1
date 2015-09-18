@@ -1,100 +1,100 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
+int retorno;
 /**
-*\brief Suma un registro con un número
-*\param Rd, guarda el resutlado
-*\param Rm operando 1
+*\brief Suma un registro con un numero
+*\param Ra, guarda el resultado
+*\param Rb operando 1
 *\param inmediato operando 2
-*\return
+*\return no retorna nada
 **/
-void ADDS(uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+void ADDS(uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
 
 /**
 *\brief Copia el valor del inmediato en el registro
-*\param Rd guarda el resultado
+*\param Ra guarda el resultado
 *\param inmediato operando 2
-*\return
+*\return no retorna nada
 **/
-void MOVS(uint32_t Rd, uint32_t inmediato);
+void MOVS(uint32_t *Ra, uint32_t inmediato);
 
 /**
-*\brief Resta un registro con un número
-*\param Rd guarda el resultado
-*\param Rm operando 1
+*\brief Resta un registro con un numero
+*\param Ra guarda el resultado
+*\param Rb operando 1
 *\param inmediato operando 2
-*\return
+*\return no retorna nada
 **/
-void SUBS(uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+void SUBS(uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
 
 /**
-*\brief Multiplica un registro con un número
-*\param Rd, guarda el resultado
-*\param Rm operando 1
+*\brief Multiplica un registro con un numero
+*\param Ra, guarda el resultado
+*\param Rb operando 1
 *\param inmediato operando 2
-*\return
+*\return no retorna nada
 **/
-void MULS (uint32_t Rd,uint32_t Rm, uint32_t inmediato);
+void MULS (uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
 
 /**
 *\brief funcion que suma
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
-*\return
+*\param Ra guarda el resultado
+*\param Rb operando 1
+*\param Rc operando 2
+*\return no retorna nada
 **/
-void ADD(uint32_t *Rd,uint32_t *Rm,uint32_t *Rr);
+void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc);
 
 /**
 *\brief funcion que resta
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
-*\return un entero de 32 bits con el resultado
+*\param Ra guaRaa el resultado
+*\param Rb operando 1
+*\param Rc operando 2
+*\return n entero de 32 bits con el resultado
 **/
-void SUB(uint32_t Rd,uint32_t Rm, uint32_t Rr);
+int SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 
 /**
 *\brief funcion de producto logico
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
+*\param Ra guarda el resultado
+*\param Rb operando 1
+*\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void AND(uint32_t Rd,uint32_t Rm, uint32_t Rr);
+void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 
 /**
 *\brief funcion de suma logica
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
+*\param Ra guarda el resultado
+*\param Rb operando 1
+*\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void OR(uint32_t *Rd,uint32_t *Rm, uint32_t *Rr);
+void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 
 /**
 *\brief funcion de or exclusiva
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
+*\param Ra guarda el resultado
+*\param Rb operando 1
+*\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void EOR(uint32_t Rd,uint32_t Rm, uint32_t Rr);
+void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 
 /**
 *\brief funcion que escribe un valor de un registro en otro registro
-*\param Rd guarda el resultado
-*\param Rm operando 1
+*\param Ra guarda el resultado
+*\param Rb operando 1
 *\return un entero de 32 bits con el resultado
 **/
-void MOV(uint32_t Rd, uint32_t Rm);
+void MOV(uint32_t *Ra, uint32_t *Rb);
 
 /**
 *\brief funcion que multiplica dos registros
-*\param Rd guarda el resultado
-*\param Rm operando 1
-*\param Rr operando 2
+*\param Ra guarda el resultado
+*\param Rb operando 1
+*\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void MUL (uint32_t Rd, uint32_t Rm, uint32_t Rr);
+void MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);

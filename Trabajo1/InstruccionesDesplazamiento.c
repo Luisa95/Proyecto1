@@ -1,18 +1,15 @@
 #include "InstruccionesDesplazamiento.h"
 #include "registros.h"
 
-void LSL (uint32_t Rd, uint32_t Rm, uint32_t inmediato) // Rd: guarda le resultado, Rm # registro a desplazar inmediato:# de desplazamientos
+void LSL (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato) // Rd: guarda le resultado, *Rb # registro a desplazar inmediato:# de desplazamientos
 {
     if (inmediato==0)
     {
-      Rd=Rd<<Rm;
-      printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd, inmediato);
+     *Ra=(*Ra)<<(*Rb);
       pc=pc+2;
     }
     else
-      Rd=Rm<<inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
-
-    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
+    *Ra=(*Rb)<<inmediato;     //Desplaza *Rb a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
     pc=pc+2;
 }
 void NOP()
@@ -20,55 +17,46 @@ void NOP()
     pc=pc+2;
 }
 
-void LSR (uint32_t Rd, uint32_t Rm, uint32_t inmediato)
+void LSR (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato)
 {
     if (inmediato==0)
     {
-      Rd=Rd>>Rm;
-      printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd, inmediato);
+     *Ra=(*Ra)>>(*Rb);
       pc=pc+2;
     }
     else
-      Rd=Rm>>inmediato;     //Desplaza Rm a la izquierda tantas veces como lo diga Rn y lo guarda en Rd
-
-    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
+   *Ra=(*Rb)>>inmediato;     //Desplaza *Rb a la izquie*Raa tantas veces como lo diga Rn y lo gua*Raa en *Ra
     pc=pc+2;
 }
-void BIC (uint32_t Rd, uint32_t Rm)
+void BIC (uint32_t *Ra, uint32_t *Rb)
 {
-    Rd&=~Rm;        //Realiza un and entre Rd y el complemento de Rm, y lo guarda en Rd
-    printf("resultado guardado en Rd: %d \n ",Rd,Rm);
+   *Ra&=~(*Rb);        //Realiza un and entre *Ra y el complemento de *Rb, y lo gua*Raa en *Ra
     pc=pc+2;
 }
-void MVN (uint32_t Rd, uint32_t Rm)
+void MVN (uint32_t *Ra, uint32_t *Rb)
 {
-    Rd=~Rm;         // Realiza el complemento de Rm y lo guarda en Rd
-    printf("resultado guardado en Rd: %d correspondiente al complemento de %d\n",Rd,Rm);
+   *Ra=~(*Rb);         // Realiza el complemento de *Rb y lo gua*Raa en *Ra
     pc=pc+2;
 }
-void RSBS(uint32_t Rd, uint32_t Rm)
+void RSBS(uint32_t *Ra, uint32_t *Rb)
 {
-    Rd=0-Rm;      //Niega el registro Rm y lo guarda en Rd
-    printf("resultado guardado en Rd: %d   \n correspondiente al complemento a dos de %d \n",Rd,Rm);
+    *Ra=0-(*Rb);      //Niega el registro *Rb y lo gua*Raa en *Ra
     pc=pc+2;
 }
 
-void ASRS (int32_t Rd, int32_t Rm)
+void ASRS (int32_t *Ra, int32_t *Rb)
 {
-    Rd=Rd>>Rm;
-    printf("resultado guardado en Rd: %d   \n se desplazó %d veces",Rd,Rm);
+    *Ra=(*Ra)>>(*Rb);
     pc=pc+2;
 
 }
-void ROR (uint32_t Rd, uint32_t Rm)
+void ROR (uint32_t *Ra, uint32_t *Rb)
 {
-    Rd=Rd>>Rm;
+    *Ra=(*Ra)>>(*Rb);
 
-    if(Rd & 0x01)  //Si se cumple, hay un 1 en el LSB
-		Rd = (Rd>>1) | 0x80;
+    if(*Ra & 0x01)  //Si se cumple, hay un 1 en el LSB
+		*Ra = (*Ra>>1) | 0x80;
 	else
-		Rd >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
+		*Ra >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
 	pc=pc+2;
-
 }
-
