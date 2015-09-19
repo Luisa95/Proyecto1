@@ -1,5 +1,7 @@
 Trabajo1/bin/*
 Trabajo1/obj/*
+Trabajo1/latex/*
+Trabajo1/html/*
 *.depend
 *.layout
 *.cbp
