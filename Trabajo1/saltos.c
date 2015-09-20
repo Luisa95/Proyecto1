@@ -2,7 +2,7 @@
 
 void B (pc, uint32_t Pos)
 {
-    pc=pc+2*Pos;
+    pc=pc+(2*Pos);
 }
 void BEQ()
 {

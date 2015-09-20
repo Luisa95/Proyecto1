@@ -7,7 +7,8 @@
 
 typedef struct
 {
-	char** array;
+   char** array;
+
 }ins_t;
 
 typedef struct
