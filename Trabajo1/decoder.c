@@ -6,7 +6,7 @@
 typedef struct
 {
 	char mnemonic[10];
-	char op1_type; // reconoce una r o un #
+	char op1_type; // reconoce una r o un numeral
 	char op2_type;
 	char op3_type;
 	uint32_t op1_value; guarda el numero del registro o el valor del inmediato
@@ -14,110 +14,108 @@ typedef struct
 	uint32_t op3_value;
 }instruction_t;
 */
-void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr, int *flg)// recibe el retorno de getInstruccion
+void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr, bool *flg, int*pc)// recibe el retorno de getInstruccion
 {    uint32_t cero=0;
 	if( strcmp(instruction.mnemonic,"ADC") == 0 )
         {
-
 	    } else
 
 	if( strcmp(instruction.mnemonic,"ADD") == 0)
         {
-            if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
+           if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-            ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+           ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0],&pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
+           ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
         }else
 
 	    if( strcmp(instruction.mnemonic,"AND") == 0)
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
-
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
 	    } else
 	 if( strcmp(instruction.mnemonic,"ASRS") == 0 )
         {
 		if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-           ASRS(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+           ASRS(&Rd[instruction.op1_value],&Rm[instruction.op2_value], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
-           ASRS(&Rd[instruction.op1_value],&instruction.op2_value);
+           ASRS(&Rd[instruction.op1_value],&instruction.op2_value, &pc);
         } else
      if( strcmp(instruction.mnemonic,"BIC") == 0 )
         {
 		if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-           BIC(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+           BIC(&Rd[instruction.op1_value],&Rm[instruction.op2_value], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
-           BIC(&Rd[instruction.op1_value],&instruction.op2_value);
+           BIC(&Rd[instruction.op1_value],&instruction.op2_value, &pc);
         } else
 	 if( strcmp(instruction.mnemonic,"CMN") == 0)
         {
 		if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-        CMN(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+        CMN(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-        CMN(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+        CMN(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value, &pc);
         } else
 	 if( strcmp(instruction.mnemonic,"CMP") == 0 )
         {
 		if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-        CMP(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+        CMP(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-        CMP(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+        CMP(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value, &pc);
 		} else
 	 if( strcmp(instruction.mnemonic,"EOR") == 0)
         {if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
+           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
 		} else
 	 if( strcmp(instruction.mnemonic,"LSL") == 0 )
         {if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value);
+         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value, &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero);
+         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero, &pc);
 
 	    } else
      if( strcmp(instruction.mnemonic,"LSR") == 0)
         {
         {if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero);
+         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero, &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value);
+         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value, &pc);
         }
         } else
 	 if( strcmp(instruction.mnemonic,"MOV") == 0)
         {
           if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-         MOV(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&flg[0]);
+         MOV(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&flg[0], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
-         LSL(&Rd[instruction.op1_value],&instruction.op2_value,&flg[0]);
+         LSL(&Rd[instruction.op1_value],&instruction.op2_value,&flg[0], &pc);
 	    } else
 	 if( strcmp(instruction.mnemonic,"MUL") == 0)
         {
 
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           MUL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+           MUL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
 
 	    } else
      if(strcmp(instruction.mnemonic,"MVN") == 0)
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-         MVN(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+         MVN(&Rd[instruction.op1_value],&Rm[instruction.op2_value], &pc);
         /* solo opera registros
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
          LSL(&Rd[instruction.op1_value],&instruction.op2_value);
@@ -127,17 +125,17 @@ void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
 	    } else
 	 if(strcmp(instruction.mnemonic,"NOP") == 0 )
         {
-		NOP();
+		NOP( &pc);
 	    }
 	    else
      if(strcmp(instruction.mnemonic,"OR") == 0)
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0], &pc);
         }else
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
+        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
 	    } else
 
 	 if( strcmp(instruction.mnemonic,"REV") == 0 )  //1
@@ -166,7 +164,7 @@ void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
         {
 		if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-        ROR(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+        ROR(&Rd[instruction.op1_value],&Rm[instruction.op2_value], &pc);
 
         /*      SOLO OPERA REGISTROS
         }else
@@ -178,31 +176,27 @@ void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
         {
          if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-        RSBS(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+        RSBS(&Rd[instruction.op1_value],&Rm[instruction.op2_value], &pc);
         }else
         if((instruction.op1_type=='R')&&instruction.op2_type=='#')
-        RSBS(&Rd[instruction.op1_value],&instruction.op2_value);
+        RSBS(&Rd[instruction.op1_value],&instruction.op2_value, &pc);
 	    } else
-	 if( strcmp(instruction.mnemonic,"SBC") == 0 ) //4
+	 /*if( strcmp(instruction.mnemonic,"SBC") == 0 ) //4
         {
-	    } else
+	    } else*/
 	 if( strcmp(instruction.mnemonic,"SUB") == 0 )
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
+         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0], &pc);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
+         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0], &pc);
 	    } else
 	 if( strcmp(instruction.mnemonic,"TST") == 0) //5
         {
 	    }
 }
 }
-
-
-
-
 instruction_t getInstruction(char* instStr)
 {
 	instruction_t instruction;
@@ -231,7 +225,7 @@ instruction_t getInstruction(char* instStr)
 				break;
 		}
 		split = strtok(NULL, " ,."); // en el txt las instrucciones deben finalizar con "."
-		num++;
+		num++;  // recorre todo el codigo
 	}
 	if(num==3){
 		instruction.op3_type  = 'N';

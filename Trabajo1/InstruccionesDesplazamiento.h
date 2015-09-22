@@ -9,7 +9,7 @@
 *\param inmediato operando 3
 *\return no retorna nada
 **/
-void LSL (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
+void LSL (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato,int*pc);
 
 /**
 *\brief funcion de desplazamiento logico a la derecha
@@ -18,7 +18,7 @@ void LSL (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
 *\param inmediato operando 3
 *\return no retorna nada
 **/
-void LSR (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
+void LSR (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato,int*pc);
 
 /**
 *\brief funcion que realiza una AND entre un registro y el complemento de otro
@@ -26,7 +26,7 @@ void LSR (uint32_t *Ra, uint32_t *Rb, uint32_t inmediato);
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void BIC (uint32_t *Ra, uint32_t *Rb);
+void BIC (uint32_t *Ra, uint32_t *Rb,int*pc);
 
 /**
 *\brief funcion que gua*Raa el complemento de un numero
@@ -34,7 +34,7 @@ void BIC (uint32_t *Ra, uint32_t *Rb);
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void MVN (uint32_t *Ra, uint32_t *Rb);
+void MVN (uint32_t *Ra, uint32_t *Rb,int*pc);
 
 /**
 *\brief funcion que obtiene el complemento a dos de un numero
@@ -42,12 +42,12 @@ void MVN (uint32_t *Ra, uint32_t *Rb);
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void RSBS (uint32_t *Ra, uint32_t *Rb);
+void RSBS (uint32_t *Ra, uint32_t *Rb,int*pc);
 
 /**
 *\brief funcion que no hace ninguna operacion solo aumenta el valor del pc
 **/
-void NOP ();
+void NOP (int *pc);
 
 /**
 *\brief funcion de desplazamiento aritmetico a la derecha
@@ -55,7 +55,7 @@ void NOP ();
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void ASRS (uint32_t *Ra, uint32_t *Rb);
+void ASRS (uint32_t *Ra, uint32_t *Rb,int*pc);
 
 /**
 *\brief funcion de rotacion a la derecha
@@ -63,8 +63,8 @@ void ASRS (uint32_t *Ra, uint32_t *Rb);
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void ROR (uint32_t *Ra, uint32_t *Rb);
+void ROR (uint32_t *Ra, uint32_t *Rb,int*pc);
 
-void CMP (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);
+void CMP (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc,int*pc);
 
-void CMN (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);
+void CMN (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc,int*pc);

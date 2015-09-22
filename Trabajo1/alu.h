@@ -1,6 +1,5 @@
-#include "registros.h"
 #include "banderas.h"
-#include "curses.h"
+#include <curses.h>
 
 /**
 *\brief funcion que suma
@@ -9,7 +8,7 @@
 *\param Rc operando 2
 *\return no retorna nada
 **/
-void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc, int* flg);
+void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc, bool* flg, int *pc);
 
 /**
 *\brief funcion que resta
@@ -18,7 +17,7 @@ void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc, int* flg);
 *\param Rc operando 2
 *\return n entero de 32 bits con el resultado
 **/
-void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
+void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
 /**
 *\brief funcion de producto logico
@@ -27,7 +26,7 @@ void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
+void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
 /**
 *\brief funcion de suma logica
@@ -36,7 +35,7 @@ void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
+void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
 /**
 *\brief funcion de or exclusiva
@@ -45,7 +44,7 @@ void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
+void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
 /**
 *\brief funcion que escribe un valor de un registro en otro registro
@@ -53,7 +52,7 @@ void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 *\param Rb operando 1
 *\return un entero de 32 bits con el resultado
 **/
-void MOV(uint32_t *Ra, uint32_t *Rb, int* flg);
+void MOV(uint32_t *Ra, uint32_t *Rb, bool*flg, int *pc);
 
 /**
 *\brief funcion que multiplica dos registros
@@ -62,4 +61,4 @@ void MOV(uint32_t *Ra, uint32_t *Rb, int* flg);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-void MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc, int* flg);
+void MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);

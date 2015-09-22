@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
+#include <curses.h>
 
 typedef struct
 {
@@ -26,7 +27,7 @@ typedef struct
     \brief Decodifica la instruccion y la ejecuta.
     \param instruction instruccion a decodificar y ejecutar.
 */
-void decodeInstruction(instruction_t instruction, uint32_t* Rd, uint32_t* Rm, uint32_t* Rr,int *flg);
+void decodeInstruction(instruction_t instruction, uint32_t* Rd, uint32_t* Rm, uint32_t* Rr,bool *flg, int*pc);
 
 /** \fn instruction_t getInstruction(char* instStr)
     \brief Obtiene la instruccion separada por partes.

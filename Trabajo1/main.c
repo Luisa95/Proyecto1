@@ -2,13 +2,10 @@
 #include "decoder.h"
 #include <curses.h>
 
-/** funciones de la alu retorno void, definir un puntero de banderas, ncluirlo en alu.h, en banderas.h y en main.c
-crear un ciclo infinito que incluya el llamamiento a las funciones del cedodificador y la impression de los registros
-eliminar la fucking estructura**/
-
 int main(void)
 {
-int j;
+
+int j,*pc;
 
 	initscr();		/* Inicia modo curses */
 	curs_set(0);	/* Cursor Invisible */
@@ -31,7 +28,7 @@ int j;
 y usando e paso por referencia se envia la posicion deseada *a la función requerida*/
 
   uint32_t Rd[12], Rm[12], Rr[12];
-  int flg[4];
+  bool flg[4];
   Registros(Rd,Rm,Rr);/* Solo una vez para dar valores iniciales*/
 
 	move(1, 30);	/* Mueve el cursor a la posición y=2, x=30*/
@@ -50,12 +47,13 @@ for(j=0;j<12;j++)
     mvprintw(4+j,2,"Rd[%d]:  %d  Rm[%d]:  %d  Rr[%d]:  %d ",j,*(Rd+j), j,*(Rm+j),j, *(Rr+j));
     getch();
 }
+
          /*llama al decodificador*/
       //------- No modificar ------//
          int i, num_instructions;
 		ins_t read;
 		char** instructions;
-		instruction_t instruction, instruccionRetornada;
+		instruction_t instruction;
 
 		num_instructions = readFile("code.txt", &read);
 		if(num_instructions==-1)
@@ -66,9 +64,10 @@ for(j=0;j<12;j++)
 
 		instructions = read.array; /*Arreglo con las instrucciones*/
 	//---------------------------//
+getch();
 
-    instruccionRetornada=getInstruction(instructions);
-    decodeInstruction(instruccionRetornada,Rd,Rm,Rr,flg);
+    instruction=getInstruction(instructions);
+    decodeInstruction(instruction,Rd,Rm,Rr,flg,&pc);
       /*-------------------------------------*/
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     attron(COLOR_PAIR(3));
@@ -86,7 +85,7 @@ for(j=0;j<12;j++)
     mvprintw(22,2,"Acarreo: %d",flg[2]);
 	mvprintw(23,2,"Sobreflujo: %d",flg[3]);
 
-    mvprintw(23,30,"PC: %d",pc);
+    mvprintw(23,30,"PC: %d",*pc);
 	attroff(COLOR_PAIR(1));	/* DEshabilita los colores Pair 1 */
 
 	getch();	/* Espera entrada del usuario */
