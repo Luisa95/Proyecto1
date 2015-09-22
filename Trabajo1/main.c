@@ -1,24 +1,23 @@
 #include "registros.h"
-#include "alu.h"
 #include "decoder.h"
-#include "banderas.h"
-#include "InstruccionesDesplazamiento.h"
 #include <curses.h>
+
+/** funciones de la alu retorno void, definir un puntero de banderas, ncluirlo en alu.h, en banderas.h y en main.c
+crear un ciclo infinito que incluya el llamamiento a las funciones del cedodificador y la impression de los registros
+eliminar la fucking estructura**/
+
 int main(void)
 {
 int j;
-flag flg;
 
 	initscr();		/* Inicia modo curses */
 	curs_set(0);	/* Cursor Invisible */
 	raw();			/* Activa modo raw */
 	keypad(stdscr, TRUE);	/* Obtener F1, F2, etc */
 	noecho();		/* No imprimir los caracteres leidos */
-
 	start_color();	/* Permite manejar colores */
-
     init_pair(1, COLOR_GREEN, COLOR_BLACK);	/* Pair 1 -> Texto blanco
-											   fondo Negro */
+										   fondo Negro */
 	border( ACS_VLINE, ACS_VLINE,
 			ACS_HLINE, ACS_HLINE,
             ACS_ULCORNER, ACS_URCORNER,
@@ -28,13 +27,11 @@ flag flg;
 
                               texto y negro para el fondo Pair 1*/
 
-
-
 /* se definen los registros como vectores (punteros constantees) en el main,
 y usando e paso por referencia se envia la posicion deseada *a la función requerida*/
 
-
   uint32_t Rd[12], Rm[12], Rr[12];
+  int flg[4];
   Registros(Rd,Rm,Rr);/* Solo una vez para dar valores iniciales*/
 
 	move(1, 30);	/* Mueve el cursor a la posición y=2, x=30*/
@@ -43,7 +40,8 @@ y usando e paso por referencia se envia la posicion deseada *a la función requer
 				Sin esto el printw no es mostrado */
 
 
-while (1){
+while (1)
+{
 for(j=0;j<12;j++)
 {
     init_pair(2, COLOR_CYAN, COLOR_BLACK);
@@ -70,8 +68,7 @@ for(j=0;j<12;j++)
 	//---------------------------//
 
     instruccionRetornada=getInstruction(instructions);
-    flg=SUB(&Rd[5],&Rm[3],&Rr[3]);
-    flg=decodeInstruction(instruccionRetornada,Rd,Rm,Rr);
+    decodeInstruction(instruccionRetornada,Rd,Rm,Rr,flg);
       /*-------------------------------------*/
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     attron(COLOR_PAIR(3));
@@ -84,10 +81,10 @@ for(j=0;j<12;j++)
 
     init_pair(5, COLOR_WHITE, COLOR_BLACK);
     attron(COLOR_PAIR(5));
-    mvprintw(20,2,"Zero: %d",flg.bndras[0]);
-    mvprintw(21,2,"Negativa: %d",flg.bndras[1]);
-    mvprintw(22,2,"Acarreo: %d",flg.bndras[2]);
-	mvprintw(23,2,"Sobreflujo: %d",flg.bndras[3]);
+    mvprintw(20,2,"Zero: %d",flg[0]);
+    mvprintw(21,2,"Negativa: %d",flg[1]);
+    mvprintw(22,2,"Acarreo: %d",flg[2]);
+	mvprintw(23,2,"Sobreflujo: %d",flg[3]);
 
     mvprintw(23,30,"PC: %d",pc);
 	attroff(COLOR_PAIR(1));	/* DEshabilita los colores Pair 1 */

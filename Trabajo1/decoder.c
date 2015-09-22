@@ -14,11 +14,9 @@ typedef struct
 	uint32_t op3_value;
 }instruction_t;
 */
-flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr)// recibe el retorno de getInstruccion
-{
-    uint32_t cero=0;
-    flag flgreturn;
-	if( strcmp(instruction.mnemonic,"ADC") == 0 ) //0
+void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr, int *flg)// recibe el retorno de getInstruccion
+{    uint32_t cero=0;
+	if( strcmp(instruction.mnemonic,"ADC") == 0 )
         {
 
 	    } else
@@ -27,27 +25,27 @@ flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
         {
             if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-            ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+            ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+           ADD(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
         }else
 
-	    if( strcmp(instruction.mnemonic,"AND") == 0
+	    if( strcmp(instruction.mnemonic,"AND") == 0)
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
 
 	    } else
 	 if( strcmp(instruction.mnemonic,"ASRS") == 0 )
         {
-		if((instruction.op1_type=='R')&&(instruction.op2_type=='R')))
+		if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
            ASRS(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
-           ASRS(&Rd[instruction.op1_value],&instruction.op2_type_type_value);
+           ASRS(&Rd[instruction.op1_value],&instruction.op2_value);
         } else
      if( strcmp(instruction.mnemonic,"BIC") == 0 )
         {
@@ -76,16 +74,16 @@ flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
 	 if( strcmp(instruction.mnemonic,"EOR") == 0)
         {if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+           EOR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
 		} else
 	 if( strcmp(instruction.mnemonic,"LSL") == 0 )
         {if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero);
+         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+         LSL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero);
 
 	    } else
      if( strcmp(instruction.mnemonic,"LSR") == 0)
@@ -94,24 +92,25 @@ flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
 		{
          LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],cero);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+         LSR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],instruction.op3_value);
+        }
         } else
 	 if( strcmp(instruction.mnemonic,"MOV") == 0)
         {
           if((instruction.op1_type=='R')&&(instruction.op2_type=='R'))
 		{
-         MOV(&Rd[instruction.op1_value],&Rm[instruction.op2_value]);
+         MOV(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='#'))
-         LSL(&Rd[instruction.op1_value],&instruction.op2_value);
+         LSL(&Rd[instruction.op1_value],&instruction.op2_value,&flg[0]);
 	    } else
 	 if( strcmp(instruction.mnemonic,"MUL") == 0)
         {
 
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-           MUL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+           MUL(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+           AND(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
 
 	    } else
      if(strcmp(instruction.mnemonic,"MVN") == 0)
@@ -135,10 +134,10 @@ flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value)
+        OR(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
 	    } else
 
 	 if( strcmp(instruction.mnemonic,"REV") == 0 )  //1
@@ -191,18 +190,18 @@ flag decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uin
         {
         if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='R'))
 		{
-         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value]);
+         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&Rr[instruction.op3_value],&flg[0]);
         }else if((instruction.op1_type=='R')&&(instruction.op2_type=='R')&&(instruction.op3_type=='#'))
-         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value);
+         SUB(&Rd[instruction.op1_value],&Rm[instruction.op2_value],&instruction.op3_value,&flg[0]);
 	    } else
 	 if( strcmp(instruction.mnemonic,"TST") == 0) //5
         {
-	    } else
+	    }
 }
 }
 
-return (flgreturn);
-}
+
+
 
 instruction_t getInstruction(char* instStr)
 {

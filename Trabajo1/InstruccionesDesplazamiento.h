@@ -55,7 +55,7 @@ void NOP ();
 *\param Rb operando 2
 *\return no retorna nada
 **/
-void ASRS (int32_t *Ra, int32_t *Rb);
+void ASRS (uint32_t *Ra, uint32_t *Rb);
 
 /**
 *\brief funcion de rotacion a la derecha
@@ -64,3 +64,7 @@ void ASRS (int32_t *Ra, int32_t *Rb);
 *\return no retorna nada
 **/
 void ROR (uint32_t *Ra, uint32_t *Rb);
+
+void CMP (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);
+
+void CMN (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);

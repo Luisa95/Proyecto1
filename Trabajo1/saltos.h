@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*#include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -19,3 +19,4 @@ void BGT();
 void BLE();
 void BAL();
 
+*/

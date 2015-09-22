@@ -1,3 +1,4 @@
+/*
 #include "saltos.h"
 
 void B (pc, uint32_t Pos)
@@ -64,3 +65,4 @@ void BAL()
 {
 
 }
+*/

@@ -1,67 +1,64 @@
 #include "alu.h"
 #include "registros.h"
-#include<banderas.h>
-// Entre Registros
-flag ADD(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc)
+
+
+void ADD(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg)
 {
-    flag retorno;
+
     *Ra=*(Rb)+*(Rc);       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
     pc=pc+2;
-    retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+    banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 }
 
-flag SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc)
+void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int*flg)
 {
-   flag retorno;
+
     *Ra=*(Rb)-*(Rc);
     pc=pc+2;
-    retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+     banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 }
 
-flag MUL (uint32_t *Ra, uint32_t *Rb,uint32_t *Rc)
+void MUL (uint32_t *Ra, uint32_t *Rb,uint32_t *Rc, int*flg)
 {
-    flag retorno;
+
     *Ra=(*Rb)*(*Rc);
     pc=pc+2;     //Multiplica 2 registros
-   retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+    banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 }
 
-flag AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc)
+void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int*flg)
 {
-    flag retorno;
+
     *Ra=(*Rb)&(*Rc);
     pc=pc+2;
-    retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+     banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 }
 
-flag OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc)
+void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int*flg)
 {
-    flag retorno;
+
     *Ra=(*Rb)|(*Rc);
     pc=pc+2;
-    retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+     banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 }
 
-flag EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc)
+void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int*flg)
 {
-    flag retorno;
+
     *Ra=(*Rb)^(*Rc);
     pc=pc+2;
-    retorno=banderas (*Ra,*Rb,*Rc);
-    return (retorno);
+     banderas (*Ra,*Rb,*Rc,&flg[0]);
+
 };
 
-flag MOV(uint32_t *Ra,uint32_t *Rb)
+void MOV(uint32_t *Ra,uint32_t *Rb, int*flg)
 {
-    flag retorno;
     *Ra=*Rb;
     pc=pc+2;
-    retorno=banderas(*Ra,*Rb);
-    return (retorno);
+     banderas(*Ra,*Rb,*Rb,&flg[0]);
 };
-// COn inmediato

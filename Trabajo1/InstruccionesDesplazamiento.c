@@ -44,7 +44,7 @@ void RSBS(uint32_t *Ra, uint32_t *Rb)
     pc=pc+2;
 }
 
-void ASRS (int32_t *Ra, int32_t *Rb)
+void ASRS (uint32_t *Ra, uint32_t *Rb)
 {
     *Ra=(*Ra)>>(*Rb);
     pc=pc+2;
@@ -59,4 +59,12 @@ void ROR (uint32_t *Ra, uint32_t *Rb)
 	else
 		*Ra >>=1; //Sino hay un 1 en el LSB, simplemente se desplaza implicitamente lo que 'gira' es un 0
 	pc=pc+2;
+}
+void CMP (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc)
+{
+
+}
+void CMN (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc)
+{
+
 }

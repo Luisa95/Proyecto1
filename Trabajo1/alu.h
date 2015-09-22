@@ -1,40 +1,6 @@
 #include "registros.h"
 #include "banderas.h"
 #include "curses.h"
-/**
-*\brief Suma un registro con un numero
-*\param Ra, guarda el resultado
-*\param Rb operando 1
-*\param inmediato operando 2
-*\return no retorna nada
-**/
-flag ADDS(uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
-
-/**
-*\brief Copia el valor del inmediato en el registro
-*\param Ra guarda el resultado
-*\param inmediato operando 2
-*\return no retorna nada
-**/
-flag MOVS(uint32_t *Ra, uint32_t inmediato);
-
-/**
-*\brief Resta un registro con un numero
-*\param Ra guarda el resultado
-*\param Rb operando 1
-*\param inmediato operando 2
-*\return no retorna nada
-**/
-flag SUBS(uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
-
-/**
-*\brief Multiplica un registro con un numero
-*\param Ra, guarda el resultado
-*\param Rb operando 1
-*\param inmediato operando 2
-*\return no retorna nada
-**/
-flag MULS (uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
 
 /**
 *\brief funcion que suma
@@ -43,7 +9,7 @@ flag MULS (uint32_t *Ra,uint32_t *Rb, uint32_t inmediato);
 *\param Rc operando 2
 *\return no retorna nada
 **/
-flag ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc);
+void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc, int* flg);
 
 /**
 *\brief funcion que resta
@@ -52,7 +18,7 @@ flag ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc);
 *\param Rc operando 2
 *\return n entero de 32 bits con el resultado
 **/
-flag SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
+void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 
 /**
 *\brief funcion de producto logico
@@ -61,7 +27,7 @@ flag SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-flag AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
+void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 
 /**
 *\brief funcion de suma logica
@@ -70,7 +36,7 @@ flag AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-flag OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
+void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 
 /**
 *\brief funcion de or exclusiva
@@ -79,7 +45,7 @@ flag OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-flag EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
+void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, int* flg);
 
 /**
 *\brief funcion que escribe un valor de un registro en otro registro
@@ -87,7 +53,7 @@ flag EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc);
 *\param Rb operando 1
 *\return un entero de 32 bits con el resultado
 **/
-flag MOV(uint32_t *Ra, uint32_t *Rb);
+void MOV(uint32_t *Ra, uint32_t *Rb, int* flg);
 
 /**
 *\brief funcion que multiplica dos registros
@@ -96,4 +62,4 @@ flag MOV(uint32_t *Ra, uint32_t *Rb);
 *\param Rc operando 2
 *\return un entero de 32 bits con el resultado
 **/
-flag MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc);
+void MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc, int* flg);
