@@ -12,7 +12,7 @@
 **/
 void LDR(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 /**
-*\brief funcion de Carga
+*\brief funcion de Carga con extension de cero
 *\param Rt guarda el resultado
 *\param Rn operando 1
 *\param inmed operando 2
@@ -20,7 +20,7 @@ void LDR(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 **/
 void LDRB(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 /**
-*\brief funcion de Carga
+*\brief funcion de Carga con extension de cero
 *\param Rt guarda el resultado
 *\param Rn operando 1
 *\param inmed operando 2
@@ -28,7 +28,7 @@ void LDRB(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 **/
 void LDRH(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 /**
-*\brief funcion de Carga
+*\brief funcion de Carga con extension de signo
 *\param Rt guarda el resultado
 *\param Rn operando 1
 *\param inmed operando 2
@@ -36,7 +36,7 @@ void LDRH(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 **/
 void LDRSB(uint32_t Rt, uint32_t Rn, uint32_t inmed);
 /**
-*\brief funcion de Carga
+*\brief funcion de Carga con extension de signo
 *\param Rt guarda el resultado
 *\param Rn operando 1
 *\param inmed operando 2

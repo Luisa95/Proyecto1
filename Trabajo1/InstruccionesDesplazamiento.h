@@ -65,6 +65,23 @@ void ASRS (uint32_t *Ra, uint32_t *Rb,int*pc);
 **/
 void ROR (uint32_t *Ra, uint32_t *Rb,int*pc);
 
+/**
+*\brief funcion de resta que solo modifica las banderas
+*\param Ra operando 1
+*\param Rb operando 2
+*\param Rc operando 3
+*\param pc operando 4
+*\return no retorna nada
+**/
+
 void CMP (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc,int*pc);
 
+/**
+*\brief funcion de suma que solo modifica las banderas
+*\param Ra operando 1
+*\param Rb operando 2
+*\param Rc operando 3
+*\param pc operando 4
+*\return no retorna nada
+**/
 void CMN (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc,int*pc);
