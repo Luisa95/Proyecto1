@@ -5,7 +5,7 @@
 int main(void)
 {
 
-int j,*pc;
+int j,a,*pc;
 
 	initscr();		/* Inicia modo curses */
 	curs_set(0);	/* Cursor Invisible */
@@ -24,18 +24,21 @@ int j,*pc;
 
                               texto y negro para el fondo Pair 1*/
 
-/* se definen los registros como vectores (punteros constantees) en el main,
-y usando e paso por referencia se envia la posicion deseada *a la función requerida*/
-
   uint32_t Rd[12], Rm[12], Rr[12];
   bool flg[4];
-  Registros(Rd,Rm,Rr);/* Solo una vez para dar valores iniciales*/
+  Registros(Rd,Rm,Rr);
 
 	move(1, 30);	/* Mueve el cursor a la posición y=2, x=30*/
 	printw("EMULADOR CORTEX-M0");
 	refresh();	/* Imprime en la pantalla
 				Sin esto el printw no es mostrado */
 
+int i, num_instructions;
+		ins_t read;
+		char** instructions;
+		instruction_t instruction;
+
+i=0;
 
 while (1)
 {
@@ -48,32 +51,35 @@ for(j=0;j<12;j++)
     getch();
 }
 
-         /*llama al decodificador*/
+       /*llama al decodificador*/
       //------- No modificar ------//
-         int i, num_instructions;
-		ins_t read;
-		char** instructions;
-		instruction_t instruction;
+
 
 		num_instructions = readFile("code.txt", &read);
+
 		if(num_instructions==-1)
-			return 0;
+            return 0;
 
-		if(read.array==NULL)
-			return 0;
+	if(read.array==NULL)
+        return 0;
 
-		instructions = read.array; /*Arreglo con las instrucciones*/
+    instructions = read.array; /*Arreglo con las instrucciones*/
 	//---------------------------//
 getch();
 
-    instruction=getInstruction(instructions);
+    instruction=getInstruction(instructions[i]);
     decodeInstruction(instruction,Rd,Rm,Rr,flg,&pc);
+    i++;
       /*-------------------------------------*/
+
     init_pair(3, COLOR_MAGENTA, COLOR_BLACK);
     attron(COLOR_PAIR(3));
-    mvprintw(18,30,"OPERACION : ");
-    mvprintw(20,30,"INSTRUCCION DE DESPLAZAMIENTO: ");
 
+   mvprintw(4,45,"numero de instrucciones %d",num_instructions);
+   mvprintw(6,45,"Linea de Codigo: %s",instructions[i]);
+   mvprintw(8,45,"PC: %d",*pc);
+//  mvprintw(8,45,"OPERACION : %s",instruction.mnemonic);
+//  mvprintw(12,45,"INSTRUCCION DE DESPLAZAMIENTO: ");
     init_pair(4, COLOR_YELLOW, COLOR_BLACK);
     attron(COLOR_PAIR(4));
     mvprintw(18,2,"BANDERAS: ");
@@ -85,10 +91,11 @@ getch();
     mvprintw(22,2,"Acarreo: %d",flg[2]);
 	mvprintw(23,2,"Sobreflujo: %d",flg[3]);
 
-    mvprintw(23,30,"PC: %d",*pc);
+
 	attroff(COLOR_PAIR(1));	/* DEshabilita los colores Pair 1 */
 
 	getch();	/* Espera entrada del usuario */
     endwin();	/* Finaliza el modo curses */
+    clear();
 }return 0;
 }

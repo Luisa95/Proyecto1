@@ -11,4 +11,4 @@
 *\param Rc operando 3
 *\return no retorna nada
 **/
-void banderas (uint32_t Ra,uint32_t Rb,uint32_t Rc, bool*flg);
+void banderas (uint32_t Ra,uint32_t Rb,uint32_t Rc, bool flg[]);

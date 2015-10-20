@@ -21,13 +21,15 @@ typedef struct
 	uint32_t op1_value;
 	uint32_t op2_value;
 	uint32_t op3_value;
+	uint8_t  registers_list[16];
+
 }instruction_t;
 
 /** \fn void decodeInstruction(instruction_t instruction)
     \brief Decodifica la instruccion y la ejecuta.
     \param instruction instruccion a decodificar y ejecutar.
 */
-void decodeInstruction(instruction_t instruction, uint32_t* Rd, uint32_t* Rm, uint32_t* Rr,bool *flg, int*pc);
+void decodeInstruction(instruction_t instruction,uint32_t* Rd, uint32_t* Rm, uint32_t* Rr, bool flg[], int*pc,uint8_t pila)// recibe el retorno de getInstruccion
 
 /** \fn instruction_t getInstruction(char* instStr)
     \brief Obtiene la instruccion separada por partes.

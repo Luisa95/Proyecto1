@@ -1,6 +1,6 @@
 #include "banderas.h"
 
-void banderas(uint32_t Ra,uint32_t Rb, uint32_t Rc, bool *flg)
+void banderas(uint32_t Ra,uint32_t Rb, uint32_t Rc, bool flg[])
 {
     /*Definir una estructura, declarar dentro un vector de banderas,
      retornar la estructura a los registros, estos la retornan al main y se imprime*/

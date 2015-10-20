@@ -8,14 +8,14 @@
 *\param Rc operando 2
 *\return no retorna nada
 **/
-void ADD(uint32_t *Ra,uint32_t *Rb,uint32_t *Rc, bool* flg, int *pc);
+void ADD(uint32_t *Ra,uint32_t Rb,uint32_t Rc, bool flg[], int *pc);
 
 /**
 *\brief funcion que resta
 *\param Ra guaRaa el resultado
 *\param Rb operando 1
 *\param Rc operando 2
-*\return n entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
@@ -24,7 +24,7 @@ void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 *\param Ra guarda el resultado
 *\param Rb operando 1
 *\param Rc operando 2
-*\return un entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
@@ -33,7 +33,7 @@ void AND(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 *\param Ra guarda el resultado
 *\param Rb operando 1
 *\param Rc operando 2
-*\return un entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
@@ -42,7 +42,7 @@ void OR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 *\param Ra guarda el resultado
 *\param Rb operando 1
 *\param Rc operando 2
-*\return un entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 
@@ -50,7 +50,7 @@ void EOR(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);
 *\brief funcion que escribe un valor de un registro en otro registro
 *\param Ra guarda el resultado
 *\param Rb operando 1
-*\return un entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void MOV(uint32_t *Ra, uint32_t *Rb, bool*flg, int *pc);
 
@@ -59,6 +59,6 @@ void MOV(uint32_t *Ra, uint32_t *Rb, bool*flg, int *pc);
 *\param Ra guarda el resultado
 *\param Rb operando 1
 *\param Rc operando 2
-*\return un entero de 32 bits con el resultado
+*\return No retorna nada
 **/
 void MUL (uint32_t *Ra, uint32_t *Rb, uint32_t *Rc, bool*flg, int *pc);

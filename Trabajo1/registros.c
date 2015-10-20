@@ -5,10 +5,8 @@ void Registros(uint32_t *Ra, uint32_t *Rb, uint32_t *Rc)
     int i;
     for (i=0;i<12;i++)
     {
-    *(Ra+i)=*(Rb+i)=*(Rc+i)=i;
+    *(Ra+i)=*(Rb+i)=*(Rc+i)=0;
     }
-    pc=0;
-
 }
    /*
    printf("Los Registros actualmente tienen los valores: \n");

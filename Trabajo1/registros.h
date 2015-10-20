@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-// variables globales
-int pc;
 /**
 *\brief funcion que muestra los registros
 *\param Rd operando 1

@@ -1,14 +1,14 @@
 #include "alu.h"
-#include "banderas.h"
+#include <curses.h>
 
-
-void ADD(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool* flg, int*pc)
+void ADD(uint32_t *Ra,uint32_t Rb, uint32_t Rc, bool flg[], int*pc)
 {
 
-    *Ra=*(Rb)+*(Rc);       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
+    *Ra=(Rb)+(Rc);       //suma 2 registros  // si la funcions recibe solo dos parametros, repetir en el llamamiento el priemr registro
     *pc=*pc+2;
-    banderas (*Ra,*Rb,*Rc,&flg[0]);
+    banderas (*Ra,Rb,Rc,&flg[0]);
 
+ mvprintw(15,30,"RESULTADO ADD: %d",*Ra);
 }
 
 void SUB(uint32_t *Ra,uint32_t *Rb, uint32_t *Rc, bool*flg, int*pc)
