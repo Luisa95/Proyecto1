@@ -1,6 +1,8 @@
 #include "registros.h"
 #include "decoder.h"
 #include <curses.h>
+#include "interrupciones.h"
+#include "banderas.h"
 
 int main(void)
 {
@@ -33,6 +35,7 @@ int j,a,*pc;
 	refresh();	/* Imprime en la pantalla
 				Sin esto el printw no es mostrado */
 
+char c;
 int i, num_instructions;
 		ins_t read;
 		char** instructions;
@@ -48,7 +51,12 @@ for(j=0;j<12;j++)
     attron(COLOR_PAIR(2));
     mvprintw(3,2,"El valor actual de los registros es ");
     mvprintw(4+j,2,"Rd[%d]:  %d  Rm[%d]:  %d  Rr[%d]:  %d ",j,*(Rd+j), j,*(Rm+j),j, *(Rr+j));
-    getch();
+    getchar(c);
+
+    if(c==3)
+    {
+        funcioninterrupcion(Rd,Rm,Rr,banderas,&pc);
+    }
 }
 
        /*llama al decodificador*/
@@ -65,8 +73,11 @@ for(j=0;j<12;j++)
 
     instructions = read.array; /*Arreglo con las instrucciones*/
 	//---------------------------//
-getch();
-
+getchar(c));
+if (c==3){
+funcioninterrupcion(Rd,Rm,Rr,banderas,&pc);
+c=0;
+}
     instruction=getInstruction(instructions[i]);
     decodeInstruction(instruction,Rd,Rm,Rr,flg,&pc);
     i++;
